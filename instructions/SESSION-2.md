@@ -40,23 +40,49 @@ Session 1 kept containers alive with `sleep infinity` and required you to manual
 
 ## New Project Structure
 
-```
+```text
 ChatSystem/
-├── compose.yaml                        # Docker Compose configuration
-├── .gitattributes                      # Enforces LF line endings and case sensitivity
-├── .gitignore                          # Ignores OS/editor junk files
-├── .editorconfig                       # Enforces consistent formatting across editors
+├── .editorconfig
+├── .gitattributes
+├── .gitignore
+├── README.md
+├── compose.yaml 🔵 (Modified)
 ├── docker/
 │   ├── laravel/
-│   │   ├── Dockerfile                  # PHP 8.4-cli + Composer 2.9 image
-│   │   ├── Dockerfile.dockerignore    # Build context exclusions for laravel-service
-│   │   └── entrypoint.development.sh  # Entrypoint script for laravel-service
+│   │   ├── Dockerfile 🔵 (Modified)
+│   │   ├── Dockerfile.dockerignore
+│   │   └── entrypoint.development.sh 🟢 (New)
 │   └── vuejs/
-│       ├── Dockerfile                  # Node 24.12.0 (Alpine) image
-│       ├── Dockerfile.dockerignore    # Build context exclusions for vuejs-service
-│       └── entrypoint.development.sh  # Entrypoint script for vuejs-service
-├── laravel-app/                        # Laravel source code (mounted into laravel-container)
-└── vuejs-app/                          # Vue.js source code (mounted into vuejs-container)
+│       ├── Dockerfile 🔵 (Modified)
+│       ├── Dockerfile.dockerignore
+│       └── entrypoint.development.sh 🟢 (New)
+├── instructions/
+│   ├── SESSION-1.md
+│   └── SESSION-2.md 🟢 (New)
+├── laravel-app/                        # Laravel source code
+│   ├── app/
+│   ├── bootstrap/
+│   ├── config/
+│   ├── database/
+│   ├── public/
+│   ├── resources/
+│   ├── routes/
+│   ├── storage/
+│   ├── tests/
+│   ├── artisan
+│   ├── composer.json
+│   ├── package.json
+│   └── (other Laravel files)
+└── vuejs-app/                          # Vue.js source code
+    ├── public/
+    ├── src/
+    │   ├── App.vue
+    │   └── main.js
+    ├── index.html
+    ├── package.json
+    └── (other Vue.js files)
+
+*Legend: 🟢 New | 🔵 Modified | 🔴 Deleted*
 ```
 
 ---

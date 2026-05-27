@@ -3,6 +3,7 @@
 ## Table of Contents
 
 - [What Changed in Session 2.2](#what-changed-in-session-22)
+- [Project Structure](#project-structure)
 - [File Contents](#file-contents)
   - [laravel-app/app/Http/Controllers/API/AuthController.php](#laravel-appapphttpcontrollersapiauthcontrollerphp)
   - [laravel-app/app/Http/Requests/User/SignupRequest.php](#laravel-appapphttprequestsuserSignupRequestphp)
@@ -31,6 +32,77 @@ Session 2.1 added Sanctum token authentication with inline validation and raw mo
 | Database schema | Unchanged | Unchanged |
 
 The three new classes are scaffolded with Artisan commands (`make:request`, `make:resource`), then edited manually to add the actual validation rules and field definitions. `AuthController.php` already exists from Session 2.1 and is edited manually to use those new classes.
+
+---
+
+## Project Structure
+
+```text
+ChatSystem/
+├── .editorconfig
+├── .gitattributes
+├── .gitignore
+├── README.md
+├── compose.yaml
+├── docker/
+│   ├── laravel/
+│   │   ├── Dockerfile
+│   │   ├── Dockerfile.dockerignore
+│   │   └── entrypoint.development.sh
+│   └── vuejs/
+│       ├── Dockerfile
+│       ├── Dockerfile.dockerignore
+│       └── entrypoint.development.sh
+├── instructions/
+│   ├── SESSION-1.md
+│   ├── SESSION-2.md
+│   ├── SESSION-2.1.md
+│   └── SESSION-2.2.md 🟢 (New)
+├── laravel-app/                        # Laravel source code
+│   ├── app/
+│   │   ├── Http/
+│   │   │   ├── Controllers/
+│   │   │   │   └── API/
+│   │   │   │       └── AuthController.php 🔵 (Modified)
+│   │   │   ├── Requests/ 🟢 (New)
+│   │   │   │   └── User/ 🟢 (New)
+│   │   │   │       ├── SigninRequest.php 🟢 (New)
+│   │   │   │       └── SignupRequest.php 🟢 (New)
+│   │   │   └── Resources/ 🟢 (New)
+│   │   │       └── User/ 🟢 (New)
+│   │   │           └── UserResource.php 🟢 (New)
+│   │   └── Models/
+│   │       └── User.php
+│   ├── bootstrap/
+│   │   └── app.php
+│   ├── config/
+│   │   └── sanctum.php
+│   ├── database/
+│   │   └── migrations/
+│   │       └── 2026_06_08_015028_create_personal_access_tokens_table.php
+│   ├── public/
+│   ├── resources/
+│   ├── routes/
+│   │   └── api.php
+│   ├── storage/
+│   ├── tests/
+│   ├── artisan
+│   ├── composer.json
+│   ├── composer.lock
+│   ├── package.json
+│   └── (other Laravel files)
+└── vuejs-app/                          # Vue.js source code
+    ├── public/
+    ├── src/
+    │   ├── App.vue
+    │   └── main.js
+    ├── index.html
+    ├── package-lock.json
+    ├── package.json
+    └── (other Vue.js files)
+
+*Legend: 🟢 New | 🔵 Modified | 🔴 Deleted*
+```
 
 ---
 

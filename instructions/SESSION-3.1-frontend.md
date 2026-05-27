@@ -3,6 +3,7 @@
 ## Table of Contents
 
 - [What Changed in Session 3.1-frontend](#what-changed-in-session-31-frontend)
+- [Project Structure](#project-structure)
 - [File Contents](#file-contents)
   - [vuejs-app/package.json](#vuejs-apppackagejson)
   - [vuejs-app/src/main.css](#vuejs-appsrcmaincss)
@@ -39,6 +40,66 @@ Session 3.0-frontend established the Vue Router structure with four stub compone
 | `Signout.vue` | `<h1>Signout</h1>` stub | Unchanged |
 
 `package.json` was updated automatically by the `npm install` commands that pulled in the AdminLTE dependency stack; it was not edited by hand. `src/main.css` is a new file and was created manually. `index.html`, `src/main.js`, `src/components/auth/Signin.vue`, `src/components/auth/Signup.vue`, and `src/components/pages/Dashboard.vue` all existed from Session 3.0-frontend and were edited manually to apply AdminLTE markup and imports.
+
+---
+
+## Project Structure
+
+```text
+ChatSystem/
+├── .editorconfig
+├── .gitattributes
+├── .gitignore
+├── README.md
+├── compose.yaml
+├── docker/
+│   ├── laravel/
+│   │   ├── Dockerfile
+│   │   ├── Dockerfile.dockerignore
+│   │   └── entrypoint.development.sh
+│   └── vuejs/
+│       ├── Dockerfile
+│       ├── Dockerfile.dockerignore
+│       └── entrypoint.development.sh
+├── instructions/
+│   ├── SESSION-1.md
+│   ├── SESSION-2.md
+│   ├── SESSION-2.1.md
+│   ├── SESSION-2.2.md
+│   ├── SESSION-3-frontend.md
+│   └── SESSION-3.1-frontend.md 🟢 (New)
+├── laravel-app/                        # Laravel source code
+│   └── (Laravel files from Session 2.x)
+└── vuejs-app/                          # Vue.js source code
+    ├── .env 🟢 (New)
+    ├── public/
+    │   └── favicon.ico
+    ├── src/
+    │   ├── components/
+    │   │   ├── auth/
+    │   │   │   ├── Signin.vue 🔵 (Modified)
+    │   │   │   ├── Signout.vue
+    │   │   │   └── Signup.vue 🔵 (Modified)
+    │   │   └── pages/
+    │   │       └── Dashboard.vue 🔵 (Modified)
+    │   ├── functions/ 🟢 (New)
+    │   │   ├── api/ 🟢 (New)
+    │   │   │   └── auth.js 🟢 (New)
+    │   │   └── swal.js 🟢 (New)
+    │   ├── router/
+    │   │   └── index.js
+    │   ├── stores/ 🟢 (New)
+    │   │   └── user.js 🟢 (New)
+    │   ├── App.vue
+    │   ├── main.css 🟢 (New)
+    │   └── main.js 🔵 (Modified)
+    ├── index.html 🔵 (Modified)
+    ├── package-lock.json 🔵 (Modified)
+    ├── package.json 🔵 (Modified)
+    └── vite.config.js 🔵 (Modified)
+
+*Legend: 🟢 New | 🔵 Modified | 🔴 Deleted*
+```
 
 ---
 

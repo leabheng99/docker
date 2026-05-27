@@ -3,6 +3,7 @@
 ## Table of Contents
 
 - [What Changed in Session 3.0-frontend](#what-changed-in-session-30-frontend)
+- [Project Structure](#project-structure)
 - [File Contents](#file-contents)
   - [vuejs-app/vite.config.js](#vuejs-appviteconfigjs)
   - [vuejs-app/src/App.vue](#vuejs-appsrcAppvue)
@@ -34,6 +35,58 @@ Sessions 2.x established the Laravel backend: authentication endpoints, Sanctum 
 | Laravel backend | Form Requests, API Resources, Sanctum auth | Unchanged |
 
 `vite.config.js` already existed from the scaffold and was edited manually to add the `server` block required for Vite to work correctly inside a Docker volume. `App.vue` and `src/router/index.js` also already existed from the scaffold and were edited manually — their bodies were replaced entirely. The four component files (`Signin.vue`, `Signup.vue`, `Signout.vue`, `Dashboard.vue`) are new and were created manually as stubs; they have no content beyond a placeholder heading. Default scaffold files in `src/views/` and `src/components/` (e.g. `HomeView.vue`, `AboutView.vue`, `HelloWorld.vue`) were deleted.
+
+---
+
+## Project Structure
+
+```text
+ChatSystem/
+├── .editorconfig
+├── .gitattributes
+├── .gitignore
+├── README.md
+├── compose.yaml
+├── docker/
+│   ├── laravel/
+│   │   ├── Dockerfile
+│   │   ├── Dockerfile.dockerignore
+│   │   └── entrypoint.development.sh
+│   └── vuejs/
+│       ├── Dockerfile
+│       ├── Dockerfile.dockerignore
+│       └── entrypoint.development.sh
+├── instructions/
+│   ├── SESSION-1.md
+│   ├── SESSION-2.md
+│   ├── SESSION-2.1.md
+│   ├── SESSION-2.2.md
+│   └── SESSION-3-frontend.md 🟢 (New)
+├── laravel-app/                        # Laravel source code
+│   └── (Laravel files from Session 2.x)
+└── vuejs-app/                          # Vue.js source code
+    ├── public/
+    │   └── favicon.ico
+    ├── src/
+    │   ├── components/
+    │   │   ├── auth/ 🟢 (New)
+    │   │   │   ├── Signin.vue 🟢 (New)
+    │   │   │   ├── Signout.vue 🟢 (New)
+    │   │   │   └── Signup.vue 🟢 (New)
+    │   │   └── pages/ 🟢 (New)
+    │   │       └── Dashboard.vue 🟢 (New)
+    │   ├── router/ 🔵 (Modified)
+    │   │   └── index.js 🔵 (Modified)
+    │   ├── App.vue 🔵 (Modified)
+    │   ├── main.css 🟢 (New)
+    │   └── main.js
+    ├── index.html
+    ├── package-lock.json
+    ├── package.json
+    └── vite.config.js 🔵 (Modified)
+
+*Legend: 🟢 New | 🔵 Modified | 🔴 Deleted*
+```
 
 ---
 
